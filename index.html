@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  STUDIO909合同会社 公式サイト
+  デザインモチーフ：『クワイエット急行909号室』の車内 ── 昼の客室
+-->
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -11,9 +15,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* パレットC「昼の客室」— キービジュアルから採取：
-     窓明かりの白 #E7E5DD / 影のオリーブ #2F2A18 /
-     コートの赤 #A5170B / ティールグレー #4E5A58 */
+  /* カラーパレット「昼の客室」
+     キービジュアルの色彩から。
+     窓明かりの白 / 影のオリーブ / コートの赤 / ティールグレー */
   :root{
     --bg:     #E7E5DD;   /* 窓明かりの白 */
     --panel:  #DCD6C6;   /* 客室の漆喰 */
@@ -72,7 +76,7 @@
       var(--bg) 96%
     );
   }
-  /* PC：拡大クロップをやめて等倍で中央配置し、左右をページ色にフェード */
+  /* PC表示：映像を等倍で中央に置き、左右をページ背景色へフェード */
   @media (min-width:900px){
     .hero{display:flex;justify-content:center}
     .hero video, .hero .hero-fallback{
@@ -118,11 +122,11 @@
   .sns svg{width:20px;height:20px;fill:var(--ink);transition:fill .25s}
   .sns a:hover svg{fill:var(--red)}
 
-  /* 区切り：時刻表の複線罫 */
+  /* セクション区切り：時刻表を思わせる複線の罫 */
   .rule{border:0;border-top:1px solid var(--line);position:relative;margin:0}
   .rule::after{content:"";position:absolute;left:0;right:0;top:3px;border-top:1px solid var(--line)}
 
-  /* 罫線の前後にゆとりを確保 */
+  /* セクション共通の余白 */
   section{padding:96px 0 112px}
   .sec-head{
     display:flex;align-items:baseline;gap:16px;
@@ -158,7 +162,7 @@
   }
   .board-cap .live{color:var(--red)}
   .news-scroll{
-    max-height:318px;            /* 約5件ぶん表示、以降はスクロール */
+    max-height:318px;            /* 最新5件を表示、以降は枠内スクロール */
     overflow-y:auto;
     scrollbar-width:thin;
     scrollbar-color:var(--red) transparent;
@@ -382,7 +386,6 @@
       <span>INFORMATION</span>
       <span class="live">● 最新情報</span>
     </div>
-    <!-- 最新5件が見え、それ以降はこの枠内をスクロール -->
     <div class="news-scroll" tabindex="0" aria-label="お知らせ一覧（スクロール可能）">
       <a class="news-item" href="https://kawagoecci.meclib.jp/library/books/classic2607/book/index.html#target/page_no=14" target="_blank" rel="noopener">
         <span class="news-date">2026.07.01</span>
@@ -414,7 +417,7 @@
         <span class="news-title">英語圏の配信番組「Best Indie Games Summer Showcase 2026」にてオフィシャルトレーラーを公開しました</span>
         <span class="ext">↗</span>
       </a>
-      <!-- ここから下はスクロールで表示される過去分 -->
+      <!-- 過去のお知らせ -->
       <a class="news-item" href="https://news.denfaminicogamer.jp/kikakuthetower/2605232f" target="_blank" rel="noopener">
         <span class="news-date">2026.05.23</span>
         <span class="news-tag">MEDIA</span>
@@ -453,8 +456,7 @@
   </div>
   <h3 class="game-lead">『クワイエット急行909号室』</h3>
 
-  <!-- ローカルファイル（file://）で開くとリファラが送られず「エラー153」になる。
-       GitHub Pagesなどhttp(s)配信では正常に再生される -->
+  <!-- YouTube埋め込みは http(s) 配信時にのみ再生されます -->
   <div class="trailer">
     <iframe src="https://www.youtube.com/embed/qEMB3p8uXao"
             title="『クワイエット急行909号室』トレーラー"
