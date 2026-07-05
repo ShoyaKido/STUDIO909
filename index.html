@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>STUDIO909合同会社｜『クワイエット急行909号室』開発スタジオ</title>
 <meta name="description" content="STUDIO909合同会社は『クワイエット急行909号室』の開発スタジオです。">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="apple-touch-icon" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -202,6 +200,11 @@
   .wishlist{
     margin-top:64px;
     text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
   }
   .wishlist a{
     display:inline-block;
@@ -216,6 +219,11 @@
     transition:background .25s, color .25s, box-shadow .25s;
   }
   .wishlist a:hover{background:var(--red);color:var(--bg);box-shadow:2px 2px 0 rgba(47,42,24,.2)}
+  .wishlist a.presskit{
+    border-color:var(--sub);
+    color:var(--sub);
+  }
+  .wishlist a.presskit:hover{background:var(--sub);color:var(--bg)}
   .wishlist-note{
     margin-top:24px;
     text-align:center;
@@ -414,6 +422,7 @@
 
   <div class="wishlist">
     <a href="https://store.steampowered.com/app/3962240/" target="_blank" rel="noopener">WISHLIST ON STEAM</a>
+    <a class="presskit" href="https://drive.google.com/drive/folders/1g2gcbQ9AMTCiOFN8wsNPTESHcCQuGNzS?usp=sharing" target="_blank" rel="noopener">PRESS KIT</a>
   </div>
   <p class="wishlist-note">2027年発売予定</p>
   <br>
