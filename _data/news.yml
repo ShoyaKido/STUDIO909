@@ -1,0 +1,60 @@
+# =============================================
+# STUDIO909 お知らせデータ
+# ---------------------------------------------
+# 新しいお知らせは、このファイルの一番上に
+# 以下の4行セットをコピーして追記するだけでOK。
+# 並び順は日付から自動でソートされるので、
+# どこに書いても表示順は正しくなります。
+#
+# tag は MEDIA / SNS / EVENT のいずれか
+# =============================================
+
+- date: 2026.07.01
+  tag: MEDIA
+  title: 川越商工会議所の会報にて弊社代表のインタビューが掲載されました
+  url: https://kawagoecci.meclib.jp/library/books/classic2607/book/index.html#target/page_no=14
+
+- date: 2026.06.24
+  tag: SNS
+  title: 英語版オフィシャルトレーラーが10万再生を突破しました
+  url: https://x.com/STUDIO909info/status/2069715712306979011
+
+- date: 2026.06.05
+  tag: MEDIA
+  title: 電ファミニコゲーマー様によるオフィシャルトレーラーの紹介記事が35万インプレッションを突破しました
+  url: https://x.com/denfaminicogame/status/2061825243136872538
+
+- date: 2026.06.05
+  tag: MEDIA
+  title: ファミ通.com様によるオフィシャルトレーラーの紹介記事が20万インプレッションを突破しました
+  url: https://x.com/famitsu/status/2061825725381132664
+
+- date: 2026.06.02
+  tag: SNS
+  title: 英語圏の配信番組「Best Indie Games Summer Showcase 2026」にてオフィシャルトレーラーを公開しました
+  url: https://www.youtube.com/watch?v=X05GKCUGR90
+
+- date: 2026.05.31
+  tag: MEDIA
+  title: 電ファミニコゲーマー様による「BitSummit」での紹介記事が20万インプレッションを突破しました
+  url: https://x.com/denfaminicogame/status/2058161806066266414
+
+- date: 2026.05.23
+  tag: MEDIA
+  title: 4Gamer様にてKazuhide Oka（ディレクター）のインタビューが掲載されました
+  url: https://www.4gamer.net/games/943/G094358/20260523014/
+
+- date: 2026.05.22
+  tag: EVENT
+  title: 日本最大級のインディーゲームイベント「BitSummit」に出展しました
+  url: https://store.steampowered.com/news/app/3962240/view/675120844883625719?l=japanese
+
+- date: 2026.05.01
+  tag: MEDIA
+  title: 「創風」運営元iGi様のnoteにて創風2025年度の開発者インタビューが掲載されました
+  url: https://note.com/igiinfo/n/n7b95ce67f59c
+
+- date: 2026.02.20
+  tag: EVENT
+  title: 経済産業省「創風」2025年度最終成果発表会に弊社代表が登壇しました
+  url: https://www.4gamer.net/games/991/G999104/20260227040/

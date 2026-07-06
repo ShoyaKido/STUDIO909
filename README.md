@@ -1,34 +1,32 @@
-# STUDIO909 公式サイト
+# studio909.jp 更新メモ
 
-『クワイエット急行909号室』の開発スタジオ**STUDIO909合同会社**の公式サイトのソースコードです。
+## お知らせ（INFORMATION）の追加方法
 
-🚂**公式サイト**: https://studio909.jp/
+`_data/news.yml` の上の方に、以下の4行セットを追記してコミットするだけ。
 
-## リンク
+```yaml
+- date: 2026.07.15
+  tag: MEDIA
+  title: ○○様にて△△が掲載されました
+  url: https://example.com/article
+```
 
-- [Steam ストアページ](https://store.steampowered.com/app/3962240/)
-- [X @STUDIO909info](https://x.com/STUDIO909info)
-- [YouTube @STUDIO909info](https://www.youtube.com/@STUDIO909info)
+- `tag` は `MEDIA` / `SNS` / `EVENT` のいずれか
+- **並び順は日付から自動ソート**されるので、ファイル内のどこに書いてもOK
+- `index.html` は触らなくてよい
 
-## サイトについて
+コミット後、GitHub Pagesが自動でビルドして数十秒〜数分で反映される。
 
-フレームワークを使わない単一HTMLの静的サイトで、GitHub Pagesで配信しています。
+## 仕組み
 
-- ページ上部のループ映像は WebM / MP4 の2形式（計200KB弱）で軽量に配信
-- `prefers-reduced-motion` に対応し、動きを抑えた環境では静止画を表示
+- GitHub Pages標準のJekyllを使用（追加設定・Actions不要）
+- `index.html` 冒頭の `---` 2行（front matter）がJekyll処理のスイッチ。**消さないこと**
+- ニュース一覧は `index.html` 内の `{% for item in sorted_news %}` ループが
+  `_data/news.yml` を読んで生成している
 
-## ファイル構成
+## 注意
 
-| ファイル | 内容 |
-| --- | --- |
-| `index.html` | サイト本体（HTML / CSS） |
-| `hero.webm` / `hero.mp4` | トップのループ映像 |
-| `hero_poster.webp` | 映像読み込み前のポスター画像 |
-| `favicon.png` | ファビコン |
-| `CNAME` | 独自ドメイン設定（GitHub Pages） |
-
-## 権利表記
-
-本リポジトリに含まれる映像・画像・テキスト等の著作権は STUDIO909合同会社 に帰属します。無断での転載・再配布はご遠慮ください。
-
-© 2026 STUDIO909
+- YAMLの `title` に `:` （半角コロン）を含む場合は全体を `"..."` で囲む
+- URLはXの投稿からコピーする場合、ブラウザのアドレスバーか「リンクをコピー」
+  から直接コピーする（Excelなどを経由するとIDが壊れることがある）
+- ローカルで確認したい場合: `bundle exec jekyll serve`（なくてもGitHub側でビルドされる）

@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) 最小設定
+# ogp.png や動画などの静的ファイルはそのまま配信されます
+title: STUDIO909合同会社
+exclude:
+  - README.md

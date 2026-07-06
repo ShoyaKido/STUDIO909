@@ -1,7 +1,8 @@
+---
+---
 <!DOCTYPE html>
 <!--
   STUDIO909合同会社 公式サイト
-  デザインモチーフ：『クワイエット急行909号室』の車内 ── 昼の客室
 -->
 <html lang="ja">
 <head>
@@ -68,7 +69,7 @@
   a:focus-visible, button:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
   .wrap{max-width:820px;margin:0 auto;padding:0 24px}
 
-  /* ============ ヒーロー：909号室の車窓（ループ映像） ============ */
+  /* ============ ヒーロー：車窓（ループ映像） ============ */
   .hero{
     position:relative;
     height:clamp(320px, 60vh, 620px);
@@ -79,7 +80,7 @@
     position:absolute; inset:0;
     width:100%; height:100%;
     object-fit:cover;
-    object-position:50% 42%;   /* 窓と人物が常に見える位置 */
+    object-position:50% 42%;   /* 窓が常に見える位置 */
   }
   .hero .hero-fallback{display:none}
   .hero-shade{
@@ -408,61 +409,15 @@
       <span class="live">● 最新情報</span>
     </div>
     <div class="news-scroll" tabindex="0" aria-label="お知らせ一覧（スクロール可能）">
-      <a class="news-item" href="https://kawagoecci.meclib.jp/library/books/classic2607/book/index.html#target/page_no=14" target="_blank" rel="noopener">
-        <span class="news-date">2026.07.01</span>
-        <span class="news-tag">MEDIA</span>
-        <span class="news-title">川越商工会議所の会報にて弊社代表のインタビューが掲載されました</span>
+{% assign sorted_news = site.data.news | sort: "date" | reverse %}
+{% for item in sorted_news %}
+      <a class="news-item" href="{{ item.url }}" target="_blank" rel="noopener">
+        <span class="news-date">{{ item.date }}</span>
+        <span class="news-tag">{{ item.tag }}</span>
+        <span class="news-title">{{ item.title }}</span>
         <span class="ext">↗</span>
       </a>
-      <a class="news-item" href="https://x.com/STUDIO909info/status/2069715712306979011" target="_blank" rel="noopener">
-        <span class="news-date">2026.06.24</span>
-        <span class="news-tag">SNS</span>
-        <span class="news-title">英語版オフィシャルトレーラーが10万再生を突破しました</span>
-        <span class="ext">↗</span>
-      </a>
-      <a class="news-item" href="https://x.com/denfaminicogame/status/2061825243136872538" target="_blank" rel="noopener">
-        <span class="news-date">2026.06.05</span>
-        <span class="news-tag">MEDIA</span>
-        <span class="news-title">電ファミニコゲーマー様による紹介記事が35万インプレッションを突破しました</span>
-        <span class="ext">↗</span>
-      </a>
-      <a class="news-item" href="https://x.com/famitsu/status/2061825725381132664" target="_blank" rel="noopener">
-        <span class="news-date">2026.06.05</span>
-        <span class="news-tag">MEDIA</span>
-        <span class="news-title">ファミ通.com様による紹介記事が20万インプレッションを突破しました</span>
-        <span class="ext">↗</span>
-      </a>
-      <a class="news-item" href="https://www.youtube.com/watch?v=X05GKCUGR90" target="_blank" rel="noopener">
-        <span class="news-date">2026.06.02</span>
-        <span class="news-tag">SNS</span>
-        <span class="news-title">英語圏の配信番組「Best Indie Games Summer Showcase 2026」にてオフィシャルトレーラーを公開しました</span>
-        <span class="ext">↗</span>
-      </a>
-      <!-- 過去のお知らせ -->
-      <a class="news-item" href="https://news.denfaminicogamer.jp/kikakuthetower/2605232f" target="_blank" rel="noopener">
-        <span class="news-date">2026.05.23</span>
-        <span class="news-tag">MEDIA</span>
-        <span class="news-title">電ファミニコゲーマー様にてKazuhide Oka（ディレクター）のインタビューが掲載されました</span>
-        <span class="ext">↗</span>
-      </a>
-      <a class="news-item" href="https://www.4gamer.net/games/943/G094358/20260523014/" target="_blank" rel="noopener">
-        <span class="news-date">2026.05.23</span>
-        <span class="news-tag">MEDIA</span>
-        <span class="news-title">4Gamer様にてKazuhide Oka（ディレクター）のインタビューが掲載されました</span>
-        <span class="ext">↗</span>
-      </a>
-      <a class="news-item" href="https://store.steampowered.com/news/app/3962240/view/675120844883625719?l=japanese" target="_blank" rel="noopener">
-        <span class="news-date">2026.05.22</span>
-        <span class="news-tag">EVENT</span>
-        <span class="news-title">日本最大級のインディーゲームイベント「BitSummit」に出展しました</span>
-        <span class="ext">↗</span>
-      </a>
-      <a class="news-item" href="https://www.4gamer.net/games/991/G999104/20260227040/" target="_blank" rel="noopener">
-        <span class="news-date">2026.02.20</span>
-        <span class="news-tag">EVENT</span>
-        <span class="news-title">経済産業省「創風」2025年度最終成果発表会に弊社代表が登壇しました</span>
-        <span class="ext">↗</span>
-      </a>
+{% endfor %}
     </div>
   </div>
   <br>
