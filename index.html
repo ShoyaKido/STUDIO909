@@ -34,16 +34,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* カラーパレット「昼の客室」
-     キービジュアルの色彩から。
-     窓明かりの白 / 影のオリーブ / コートの赤 / ティールグレー */
+  /* カラーパレット「西日の車内」（案C）
+     白い車窓に、壁面のオレンジをアクセントに。
+     窓の白 / 西日のオレンジ / 胡桃色の影 */
   :root{
-    --bg:     #E7E5DD;   /* 窓明かりの白 */
-    --panel:  #DCD6C6;   /* 客室の漆喰 */
-    --ink:    #2F2A18;   /* 影のオリーブ（本文） */
-    --sub:    #4E5A58;   /* ティールグレー（サブ文字） */
-    --red:    #A5170B;   /* コートの赤（アクセント） */
-    --line:   rgba(47,42,24,.28);
+    --bg:     #FFFFFF;   /* 窓の白 */
+    --panel:  #FBF4E8;   /* 陽の当たる漆喰 */
+    --ink:    #3A2E1E;   /* 胡桃色の影（本文） */
+    --sub:    #6B6152;   /* 灰褐色（サブ文字） */
+    --accent: #C07A1D;   /* 壁のオレンジ（アクセント） */
+    --live:   #C07A1D;   /* 最新情報ランプ */
+    --line:   rgba(58,46,30,.25);
     --disp: "Shippori Mincho B1", serif;
     --body: "Zen Kaku Gothic New", sans-serif;
     --mono: "IBM Plex Mono", monospace;
@@ -62,11 +63,10 @@
     line-height:1.9;
     letter-spacing:.02em;
     background-image:
-      radial-gradient(1000px 460px at 18% 0%, rgba(255,253,246,.7), transparent 70%),
-      radial-gradient(900px 520px at 88% 100%, rgba(78,90,88,.08), transparent 70%);
+      radial-gradient(900px 520px at 88% 100%, rgba(192,122,29,.06), transparent 70%);
   }
   a{color:inherit;text-decoration:none}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
   .wrap{max-width:820px;margin:0 auto;padding:0 24px}
 
   /* ============ ヒーロー：車窓（ループ映像） ============ */
@@ -88,10 +88,10 @@
     pointer-events:none;
     background:linear-gradient(
       to bottom,
-      rgba(47,42,24,.10) 0%,
-      rgba(47,42,24,0) 20%,
-      rgba(231,229,221,0) 48%,
-      rgba(231,229,221,.55) 76%,
+      rgba(58,46,30,.10) 0%,
+      rgba(58,46,30,0) 20%,
+      rgba(255,255,255,0) 48%,
+      rgba(255,255,255,.55) 76%,
       var(--bg) 96%
     );
   }
@@ -134,12 +134,12 @@
     display:grid;place-items:center;
     border:1px solid var(--line);
     border-radius:50%;
-    background:rgba(255,253,246,.4);
+    background:rgba(255,255,255,.4);
     transition:border-color .25s, background .25s, transform .25s;
   }
-  .sns a:hover{border-color:var(--red);background:rgba(165,23,11,.07);transform:translateY(-2px)}
+  .sns a:hover{border-color:var(--accent);background:rgba(192,122,29,.08);transform:translateY(-2px)}
   .sns svg{width:20px;height:20px;fill:var(--ink);transition:fill .25s}
-  .sns a:hover svg{fill:var(--red)}
+  .sns a:hover svg{fill:var(--accent)}
 
   /* セクション区切り：時刻表を思わせる複線の罫 */
   .rule{border:0;border-top:1px solid var(--line);position:relative;margin:0}
@@ -166,7 +166,7 @@
 
   /* ============ NEWS ============ */
   .board{
-    background:rgba(255,253,246,.55);
+    background:rgba(255,255,255,.55);
     border:1px solid var(--line);
     border-radius:4px;
     overflow:hidden;
@@ -179,16 +179,16 @@
     font-size:11px;letter-spacing:.26em;
     color:var(--sub);
   }
-  .board-cap .live{color:var(--red)}
+  .board-cap .live{color:var(--live)}
   .news-scroll{
     max-height:318px;            /* 最新5件を表示、以降は枠内スクロール */
     overflow-y:auto;
     scrollbar-width:thin;
-    scrollbar-color:var(--red) transparent;
+    scrollbar-color:var(--accent) transparent;
   }
   .news-scroll::-webkit-scrollbar{width:6px}
-  .news-scroll::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
-  .news-scroll::-webkit-scrollbar-track{background:rgba(47,42,24,.08)}
+  .news-scroll::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+  .news-scroll::-webkit-scrollbar-track{background:rgba(58,46,30,.08)}
   .news-item{
     display:flex;gap:20px;align-items:baseline;
     padding:17px 20px;
@@ -201,14 +201,14 @@
   .news-item::before{
     content:"";
     position:absolute;left:0;top:0;bottom:0;width:3px;
-    background:var(--red);
+    background:var(--accent);
     opacity:0;transition:opacity .2s;
   }
   .news-item:hover::before{opacity:1}
   .news-date{
     font-family:var(--mono);
     font-size:13px;
-    color:var(--red);
+    color:var(--accent);
     white-space:nowrap;
     min-width:7.2em;
   }
@@ -231,7 +231,7 @@
     opacity:.7;
     transition:opacity .2s, color .2s;
   }
-  .news-item:hover .ext{opacity:1;color:var(--red)}
+  .news-item:hover .ext{opacity:1;color:var(--accent)}
 
   /* ============ GAME / トレーラー ============ */
   .game-lead{
@@ -247,8 +247,8 @@
     border-radius:4px;
     overflow:hidden;
     aspect-ratio:16/9;
-    background:#1B1810;
-    box-shadow:8px 8px 0 rgba(47,42,24,.14);
+    background:#241B10;
+    box-shadow:8px 8px 0 rgba(58,46,30,.14);
   }
   .trailer iframe{
     position:absolute;inset:0;
@@ -275,14 +275,14 @@
     font-family:var(--disp);
     font-size:15px;letter-spacing:.22em;
     padding:16px 48px;
-    border:1px solid var(--red);
-    color:var(--red);
-    background:rgba(255,253,246,.5);
+    border:1px solid var(--accent);
+    color:var(--accent);
+    background:rgba(255,255,255,.5);
     border-radius:3px;
-    box-shadow:4px 4px 0 rgba(47,42,24,.12);
+    box-shadow:4px 4px 0 rgba(58,46,30,.12);
     transition:background .25s, color .25s, box-shadow .25s;
   }
-  .wishlist a:hover{background:var(--red);color:var(--bg);box-shadow:2px 2px 0 rgba(47,42,24,.2)}
+  .wishlist a:hover{background:var(--accent);color:var(--bg);box-shadow:2px 2px 0 rgba(58,46,30,.2)}
   .wishlist a.presskit{
     border-color:var(--sub);
     color:var(--sub);
@@ -302,7 +302,7 @@
     border:1px solid var(--line);
     border-radius:4px;
     overflow:hidden;
-    background:rgba(255,253,246,.55);
+    background:rgba(255,255,255,.55);
   }
   .corp dl{display:grid;grid-template-columns:minmax(9em,180px) 1fr}
   .corp dt, .corp dd{
@@ -330,9 +330,9 @@
   footer .sns a{
     width:38px;height:38px;
     background:transparent;
-    border-color:rgba(231,229,221,.35);
+    border-color:rgba(255,255,255,.35);
   }
-  footer .sns a:hover{border-color:var(--bg);background:rgba(231,229,221,.1)}
+  footer .sns a:hover{border-color:var(--bg);background:rgba(255,255,255,.1)}
   footer .sns svg{width:16px;height:16px;fill:var(--bg)}
   footer .sns a:hover svg{fill:var(--bg)}
   .legal{
@@ -342,13 +342,13 @@
     font-size:9.5px;
     line-height:1.8;
     letter-spacing:.04em;
-    color:rgba(231,229,221,.55);
+    color:rgba(255,255,255,.55);
   }
   .copyright{
     font-family:var(--mono);
     font-size:11px;
     letter-spacing:.16em;
-    color:rgba(231,229,221,.85);
+    color:rgba(255,255,255,.85);
   }
 
   @media (max-width:560px){
