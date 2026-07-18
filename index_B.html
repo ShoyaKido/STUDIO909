@@ -1,0 +1,503 @@
+---
+---
+<!DOCTYPE html>
+<!--
+  STUDIO909合同会社 公式サイト
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STUDIO909合同会社｜『クワイエット急行909号室』開発スタジオ</title>
+<meta name="description" content="STUDIO909合同会社は『クワイエット急行909号室』の開発スタジオです。">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STUDIO909合同会社">
+<meta property="og:title" content="STUDIO909合同会社｜『クワイエット急行909号室』開発スタジオ">
+<meta property="og:description" content="STUDIO909合同会社は『クワイエット急行909号室』の開発スタジオです。">
+<meta property="og:url" content="https://studio909.jp/">
+<meta property="og:image" content="https://studio909.jp/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@STUDIO909info">
+<meta name="twitter:title" content="STUDIO909合同会社｜『クワイエット急行909号室』開発スタジオ">
+<meta name="twitter:description" content="STUDIO909合同会社は『クワイエット急行909号室』の開発スタジオです。">
+<meta name="twitter:image" content="https://studio909.jp/ogp.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* カラーパレット「客席のグリーン」（案B）
+     白い車窓に、座席の深緑をアクセントに。
+     窓の白 / 常磐の緑 / 苔色のグレー */
+  :root{
+    --bg:     #FFFFFF;   /* 窓の白 */
+    --panel:  #F1F5EF;   /* 座面の淡い緑白 */
+    --ink:    #22301F;   /* 深緑の影（本文） */
+    --sub:    #5C6B5A;   /* 苔色グレー（サブ文字） */
+    --accent: #3F7A52;   /* 座席の緑（アクセント） */
+    --live:   #A5170B;   /* 最新情報の赤ランプのみ */
+    --line:   rgba(34,48,31,.25);
+    --disp: "Shippori Mincho B1", serif;
+    --body: "Zen Kaku Gothic New", sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:15px;
+    line-height:1.9;
+    letter-spacing:.02em;
+    background-image:
+      radial-gradient(900px 520px at 88% 100%, rgba(63,122,82,.05), transparent 70%);
+  }
+  a{color:inherit;text-decoration:none}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+
+  /* ============ ヒーロー：車窓（ループ映像） ============ */
+  .hero{
+    position:relative;
+    height:clamp(320px, 60vh, 620px);
+    overflow:hidden;
+    background:var(--bg);
+  }
+  .hero video, .hero .hero-fallback{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:50% 42%;   /* 窓が常に見える位置 */
+  }
+  .hero .hero-fallback{display:none}
+  .hero-shade{
+    position:absolute; inset:0;
+    pointer-events:none;
+    background:linear-gradient(
+      to bottom,
+      rgba(34,48,31,.10) 0%,
+      rgba(34,48,31,0) 20%,
+      rgba(255,255,255,0) 48%,
+      rgba(255,255,255,.55) 76%,
+      var(--bg) 96%
+    );
+  }
+  /* PC表示：映像を等倍で中央に置き、左右をページ背景色へフェード */
+  @media (min-width:900px){
+    .hero{display:flex;justify-content:center}
+    .hero video, .hero .hero-fallback{
+      position:relative; inset:auto;
+      width:auto; height:100%;
+      object-fit:cover;
+      -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+      mask-image:linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    }
+  }
+  /* 動きを減らす設定のユーザーには静止画を表示 */
+  @media (prefers-reduced-motion: reduce){
+    .hero video{display:none}
+    .hero .hero-fallback{display:block}
+  }
+
+  /* ============ ヘッダー：ロゴ＋SNS ============ */
+  header{
+    padding:16px 0 40px;
+    text-align:center;
+  }
+  .tagline{
+    margin-top:0;
+    font-family:var(--disp);
+    font-size:14px;
+    letter-spacing:.18em;
+    line-height:2.2;
+    color:var(--sub);
+  }
+  .sns{
+    margin-top:34px;
+    display:flex;justify-content:center;gap:20px;
+  }
+  .sns a{
+    width:44px;height:44px;
+    display:grid;place-items:center;
+    border:1px solid var(--line);
+    border-radius:50%;
+    background:rgba(255,255,255,.4);
+    transition:border-color .25s, background .25s, transform .25s;
+  }
+  .sns a:hover{border-color:var(--accent);background:rgba(63,122,82,.07);transform:translateY(-2px)}
+  .sns svg{width:20px;height:20px;fill:var(--ink);transition:fill .25s}
+  .sns a:hover svg{fill:var(--accent)}
+
+  /* セクション区切り：時刻表を思わせる複線の罫 */
+  .rule{border:0;border-top:1px solid var(--line);position:relative;margin:0}
+  .rule::after{content:"";position:absolute;left:0;right:0;top:3px;border-top:1px solid var(--line)}
+
+  /* セクション共通の余白 */
+  section{padding:96px 0 112px}
+  .sec-head{
+    display:flex;align-items:baseline;gap:16px;
+    margin-bottom:42px;
+  }
+  .sec-head h2{
+    font-family:var(--disp);
+    font-weight:700;
+    font-size:24px;
+    letter-spacing:.22em;
+  }
+  .sec-head .jp{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.28em;
+    color:var(--sub);
+  }
+
+  /* ============ NEWS ============ */
+  .board{
+    background:rgba(255,255,255,.55);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .board-cap{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:11px 18px;
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);
+    font-size:11px;letter-spacing:.26em;
+    color:var(--sub);
+  }
+  .board-cap .live{color:var(--live)}
+  .news-scroll{
+    max-height:318px;            /* 最新5件を表示、以降は枠内スクロール */
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-color:var(--accent) transparent;
+  }
+  .news-scroll::-webkit-scrollbar{width:6px}
+  .news-scroll::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+  .news-scroll::-webkit-scrollbar-track{background:rgba(34,48,31,.08)}
+  .news-item{
+    display:flex;gap:20px;align-items:baseline;
+    padding:17px 20px;
+    border-bottom:1px dashed var(--line);
+    transition:background .2s;
+    position:relative;
+  }
+  .news-item:last-child{border-bottom:0}
+  .news-item:hover{background:var(--panel)}
+  .news-item::before{
+    content:"";
+    position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:var(--accent);
+    opacity:0;transition:opacity .2s;
+  }
+  .news-item:hover::before{opacity:1}
+  .news-date{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--accent);
+    white-space:nowrap;
+    min-width:7.2em;
+  }
+  .news-tag{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.12em;
+    color:var(--sub);
+    border:1px solid var(--line);
+    padding:1px 8px;border-radius:2px;
+    white-space:nowrap;
+    min-width:5.5em;
+    text-align:center;
+    box-sizing:border-box;
+  }
+  .news-title{flex:1;font-size:14px}
+  .news-item .ext{
+    font-family:var(--mono);
+    font-size:12px;color:var(--sub);
+    opacity:.7;
+    transition:opacity .2s, color .2s;
+  }
+  .news-item:hover .ext{opacity:1;color:var(--accent)}
+
+  /* ============ GAME / トレーラー ============ */
+  .game-lead{
+    font-family:var(--disp);
+    font-size:clamp(20px,4vw,28px);
+    font-weight:700;
+    letter-spacing:.1em;
+    margin-bottom:40px;
+  }
+  .trailer{
+    position:relative;
+    border:1px solid var(--ink);
+    border-radius:4px;
+    overflow:hidden;
+    aspect-ratio:16/9;
+    background:#182018;
+    box-shadow:8px 8px 0 rgba(34,48,31,.14);
+  }
+  .trailer iframe{
+    position:absolute;inset:0;
+    width:100%;height:100%;border:0;
+  }
+  .trailer-cap{
+    margin-top:18px;
+    font-family:var(--mono);
+    font-size:11px;letter-spacing:.2em;
+    color:var(--sub);
+    display:flex;justify-content:space-between;
+  }
+  .wishlist{
+    margin-top:64px;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .wishlist a{
+    display:inline-block;
+    font-family:var(--disp);
+    font-size:15px;letter-spacing:.22em;
+    padding:16px 48px;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    background:rgba(255,255,255,.5);
+    border-radius:3px;
+    box-shadow:4px 4px 0 rgba(34,48,31,.12);
+    transition:background .25s, color .25s, box-shadow .25s;
+  }
+  .wishlist a:hover{background:var(--accent);color:var(--bg);box-shadow:2px 2px 0 rgba(34,48,31,.2)}
+  .wishlist a.presskit{
+    border-color:var(--sub);
+    color:var(--sub);
+  }
+  .wishlist a.presskit:hover{background:var(--sub);color:var(--bg)}
+  .wishlist-note{
+    margin-top:24px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.24em;
+    color:var(--sub);
+  }
+
+  /* ============ 企業情報 ============ */
+  .corp{
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    background:rgba(255,255,255,.55);
+  }
+  .corp dl{display:grid;grid-template-columns:minmax(9em,180px) 1fr}
+  .corp dt, .corp dd{
+    padding:15px 22px;
+    border-bottom:1px dashed var(--line);
+    font-size:14px;
+  }
+  .corp dt{
+    color:var(--sub);
+    font-family:var(--mono);
+    font-size:12px;letter-spacing:.14em;
+    display:flex;align-items:center;
+    background:var(--panel);
+  }
+  .corp dt:nth-last-of-type(1), .corp dd:last-child{border-bottom:0}
+
+  /* ============ フッター・権利表記 ============ */
+  footer{
+    background:var(--ink);
+    color:var(--bg);
+    padding:72px 0 56px;
+    text-align:center;
+  }
+  footer .sns{margin-top:0;margin-bottom:44px}
+  footer .sns a{
+    width:38px;height:38px;
+    background:transparent;
+    border-color:rgba(255,255,255,.35);
+  }
+  footer .sns a:hover{border-color:var(--bg);background:rgba(255,255,255,.1)}
+  footer .sns svg{width:16px;height:16px;fill:var(--bg)}
+  footer .sns a:hover svg{fill:var(--bg)}
+  .legal{
+    max-width:640px;
+    margin:0 auto 30px;
+    font-family:var(--mono);
+    font-size:9.5px;
+    line-height:1.8;
+    letter-spacing:.04em;
+    color:rgba(255,255,255,.55);
+  }
+  .copyright{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    color:rgba(255,255,255,.85);
+  }
+
+  @media (max-width:560px){
+    .hero{height:min(62vh, 118vw)}
+    header{padding:12px 0 64px}
+    section{padding:72px 0 88px}
+    .news-item{flex-wrap:wrap;gap:8px 14px}
+    .news-title{flex-basis:100%}
+    .news-scroll{max-height:360px}
+    .corp dl{grid-template-columns:1fr}
+    .corp dt{border-bottom:0;padding-bottom:2px}
+    .corp dd{padding-top:4px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ヒーロー：909号室の車窓（ループ映像） ============ -->
+<div class="hero">
+  <video autoplay muted loop playsinline preload="auto"
+         poster="hero_poster.webp?v=2" width="1280" height="1024"
+         aria-hidden="true" tabindex="-1">
+    <source src="hero.webm?v=2" type="video/webm">
+    <source src="hero.mp4?v=2" type="video/mp4">
+  </video>
+  <img class="hero-fallback" src="hero_poster.webp?v=2" alt="" width="1280" height="1024" aria-hidden="true">
+  <div class="hero-shade" aria-hidden="true"></div>
+</div>
+
+<!-- ============ ヘッダー：ロゴ＋SNS ============ -->
+<header>
+  <div class="wrap">
+    <p class="tagline">ループする7日間の鉄道の旅を繰り返す<br>ミステリーアドベンチャーゲーム<br>『クワイエット急行909号室』の開発スタジオです</p>
+    <nav class="sns" aria-label="SNSリンク">
+      <a href="https://store.steampowered.com/app/3962240/" target="_blank" rel="noopener" aria-label="Steam">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.7 0 .6 4.8.05 11l6.4 2.65a3.4 3.4 0 0 1 1.92-.59l2.86-4.14v-.06a4.53 4.53 0 1 1 4.53 4.53h-.1l-4.08 2.91v.15a3.4 3.4 0 1 1-6.68.93L.4 15.5A12 12 0 1 0 12 0Zm-4.5 18.2-1.47-.6a2.55 2.55 0 0 0 4.92-.95 2.55 2.55 0 0 0-2.55-2.55c-.32 0-.62.06-.9.16l1.52.63a1.88 1.88 0 0 1-1.52 3.44v-.13Zm11.28-9.34a3.02 3.02 0 1 0-6.04 0 3.02 3.02 0 0 0 6.04 0Zm-5.28 0a2.27 2.27 0 1 1 4.53 0 2.27 2.27 0 0 1-4.53 0Z"/></svg>
+      </a>
+      <a href="https://x.com/STUDIO909info" target="_blank" rel="noopener" aria-label="X（旧Twitter）">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.4l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3L17.6 20.65Z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@STUDIO909info" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<hr class="rule">
+
+<!-- ============ NEWS ============ -->
+<section id="news" class="wrap">
+  <div class="sec-head">
+    <h2>NEWS</h2><span class="jp">お知らせ</span>
+  </div>
+  <div class="board">
+    <div class="board-cap">
+      <span>INFORMATION</span>
+      <span class="live">● 最新情報</span>
+    </div>
+    <div class="news-scroll" tabindex="0" aria-label="お知らせ一覧（スクロール可能）">
+{% assign sorted_news = site.data.news | sort: "date" | reverse %}
+{% for item in sorted_news %}
+      <a class="news-item" href="{{ item.url }}" target="_blank" rel="noopener">
+        <span class="news-date">{{ item.date }}</span>
+        <span class="news-tag">{{ item.tag }}</span>
+        <span class="news-title">{{ item.title }}</span>
+        <span class="ext">↗</span>
+      </a>
+{% endfor %}
+    </div>
+  </div>
+  <br>
+</section>
+
+<hr class="rule">
+
+<!-- ============ トレーラー ============ -->
+<section id="game" class="wrap">
+  <div class="sec-head">
+    <h2>GAME</h2><span class="jp">開発タイトル</span>
+  </div>
+  <h3 class="game-lead">『クワイエット急行909号室』</h3>
+
+  <!-- YouTube埋め込みは http(s) 配信時にのみ再生されます -->
+  <div class="trailer">
+    <iframe src="https://www.youtube.com/embed/qEMB3p8uXao"
+            title="『クワイエット急行909号室』トレーラー"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+  </div>
+  <div class="trailer-cap">
+    <span>OFFICIAL TRAILER</span>
+    <span>YouTube</span>
+  </div>
+
+  <div class="wishlist">
+    <a href="https://store.steampowered.com/app/3962240/" target="_blank" rel="noopener">WISHLIST ON STEAM</a>
+    <a class="presskit" href="https://drive.google.com/drive/folders/1g2gcbQ9AMTCiOFN8wsNPTESHcCQuGNzS?usp=sharing" target="_blank" rel="noopener">PRESS KIT</a>
+  </div>
+  <p class="wishlist-note">2027年発売予定</p>
+  <br>
+</section>
+
+<hr class="rule">
+
+<!-- ============ 企業情報 ============ -->
+<section id="company" class="wrap">
+  <div class="sec-head">
+    <h2>COMPANY</h2><span class="jp">企業情報</span>
+  </div>
+  <div class="corp">
+    <dl>
+      <dt>会社名</dt><dd>STUDIO909合同会社</dd>
+      <dt>代表者</dt><dd>木戸 祥也</dd>
+      <dt>所在地</dt><dd>埼玉県川越市</dd>
+      <dt>設立</dt><dd>2025年12月</dd>
+      <dt>資本金</dt><dd>100万円</dd>
+      <dt>事業内容</dt><dd>コンピュータゲームの企画・開発・販売</dd>
+      <dt>取引銀行</dt><dd>埼玉りそな銀行、三井住友銀行</dd>
+      <dt>主な取引先</dt><dd>Valve Corporation</dd>
+      <dt>お問い合わせ</dt><dd>kido@studio909.jp</dd>
+    </dl>
+  </div>
+  <br>
+</section>
+<!-- ============ フッター・権利表記 ============ -->
+<footer>
+  <div class="wrap">
+    <nav class="sns" aria-label="SNSリンク（フッター）">
+      <a href="https://store.steampowered.com/app/3962240/" target="_blank" rel="noopener" aria-label="Steam">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.7 0 .6 4.8.05 11l6.4 2.65a3.4 3.4 0 0 1 1.92-.59l2.86-4.14v-.06a4.53 4.53 0 1 1 4.53 4.53h-.1l-4.08 2.91v.15a3.4 3.4 0 1 1-6.68.93L.4 15.5A12 12 0 1 0 12 0Zm-4.5 18.2-1.47-.6a2.55 2.55 0 0 0 4.92-.95 2.55 2.55 0 0 0-2.55-2.55c-.32 0-.62.06-.9.16l1.52.63a1.88 1.88 0 0 1-1.52 3.44v-.13Zm11.28-9.34a3.02 3.02 0 1 0-6.04 0 3.02 3.02 0 0 0 6.04 0Zm-5.28 0a2.27 2.27 0 1 1 4.53 0 2.27 2.27 0 0 1-4.53 0Z"/></svg>
+      </a>
+      <a href="https://x.com/STUDIO909info" target="_blank" rel="noopener" aria-label="X（旧Twitter）">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.4l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3L17.6 20.65Z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@STUDIO909info" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></svg>
+      </a>
+    </nav>
+    <p class="legal">
+      &copy;2026 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.<br>
+      YouTube and the YouTube logo are trademarks of Google LLC.<br>
+      X and the X logo are trademarks of X Corp.
+    </p>
+    <p class="copyright">&copy; 2026 STUDIO909</p>
+  </div>
+</footer>
+
+</body>
+</html>
