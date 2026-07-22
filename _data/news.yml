@@ -9,6 +9,11 @@
 # tag は MEDIA / SNS / EVENT のいずれか
 # =============================================
 
+- date: 2026.07.22
+  tag: MEDIA
+  title: 経済産業省コンテンツ産業支援事業「創風」に2年連続で採択されました
+  url: https://www.meti.go.jp/policy/mono_info_service/contents/2026/saitaku/list.html
+
 - date: 2026.07.01
   tag: MEDIA
   title: 川越商工会議所の会報にて弊社代表のインタビューが掲載されました
