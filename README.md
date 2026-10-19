@@ -1,38 +1,39 @@
-# studio909.jp 更新メモ
+# studio909.jp
 
-## お知らせ（INFORMATION）の追加方法
+STUDIO909合同会社の公式サイトです。GitHub Pages で公開しています。
 
-`_data/news.yml` の上の方に、以下の4行セットを追記してコミットするだけ。
+## お知らせを追加する
+
+`_data/news.yml` に次の4行を書き足して、コミットするだけです。数分でサイトに反映されます。
 
 ```yaml
-- date: 2026.07.15
-  tag: MEDIA
+- date: 2026.10.19
+  tag: SNS
   title: ○○様にて△△が掲載されました
-  url: https://example.com/article
+  url: https://example.com/
 ```
 
-- `tag` は `MEDIA` / `SNS` / `EVENT` のいずれか
-- **並び順は日付から自動ソート**されるので、ファイル内のどこに書いてもOK
-- `index.html` は触らなくてよい
-
-コミット後、GitHub Pagesが自動でビルドして数十秒〜数分で反映される。
-
-## 仕組み
-
-- GitHub Pages標準のJekyllを使用（追加設定・Actions不要）
-- `index.html` 冒頭の `---` 2行（front matter）がJekyll処理のスイッチ。**消さないこと**
-- ニュース一覧は `index.html` 内の `{% for item in sorted_news %}` ループが
-  `_data/news.yml` を読んで生成している
+- `tag` は `MEDIA` / `SNS` / `EVENT` のどれか
+- 表示順は日付で自動的に並ぶので、ファイルのどこに書いてもOK
+- 同じ日付が複数あるときは、その中の順番は決まりません
 
 ## 注意
 
-- YAMLの `title` に `:` （半角コロン）を含む場合は全体を `"..."` で囲む
-- URLはXの投稿からコピーする場合、ブラウザのアドレスバーか「リンクをコピー」
-  から直接コピーする（Excelなどを経由するとIDが壊れることがある）
-- ローカルで確認したい場合: `bundle exec jekyll serve`（なくてもGitHub側でビルドされる）
+- `title` に半角の `:` を入れるときは、全体を `"…"` で囲む
+- URLはブラウザのアドレスバーか「リンクをコピー」から直接コピーする（Excelなどを経由すると壊れることがあります）
+- `index.html` の先頭にある `---` の2行は消さない（お知らせが表示されなくなります）
+
+## ファイル
+
+| ファイル | 内容 |
+| --- | --- |
+| `index.html` | トップページ |
+| `guidelines/index.html` | 配信・動画・画像投稿ガイドライン |
+| `_data/news.yml` | お知らせ |
+| `hero.webm` / `hero.mp4` / `hero_poster.webp` | トップの動画 |
 
 ## 権利表記
 
-本リポジトリに含まれる映像・画像・テキスト等の著作権は STUDIO909合同会社 に帰属します。無断での転載・再配布はご遠慮ください。
+このリポジトリの映像・画像・テキスト等の著作権は STUDIO909合同会社 に帰属します。無断での転載・再配布はご遠慮ください。
 
 © 2026 STUDIO909
