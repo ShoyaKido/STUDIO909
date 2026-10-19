@@ -9,6 +9,21 @@
 # tag は MEDIA / SNS / EVENT のいずれか
 # =============================================
 
+- date: 2026.10.19
+  tag: SNS
+  title: 4Gamer様による体験版の紹介記事が20万インプレッションを突破しました
+  url: https://x.com/4GamerNews/status/2111155349462081609?s=20
+
+- date: 2026.10.17
+  tag: SNS
+  title: Steamにて体験版の配信を開始しました
+  url: https://store.steampowered.com/app/3962240/
+
+- date: 2026.10.17
+  tag: MEDIA
+  title: 米国の配信番組「The MIX Fall Online Showcase 2026」にて紹介されました
+  url: https://mediaindieexchange.com/showcases/the-mix-fall-online-showcase-2026
+
 - date: 2026.09.20
   tag: SNS
   title: 総来場者数25万人超の「東京ゲームショウ2026」に出展しました
