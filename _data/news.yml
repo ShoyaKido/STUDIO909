@@ -9,8 +9,13 @@
 # tag は MEDIA / SNS / EVENT のいずれか
 # =============================================
 
+- date: 2026.11.09
+  tag: MEDIA
+  title: 株式会社ドリコム（東証上場）による開発資金・販売面での支援が決定しました
+  url: https://drecom.co.jp/product_news/2026/11/20261109-01.php
+
 - date: 2026.10.30
-  tag: SNS
+  tag: EVENT
   title: 「gamescom asia x Thailand Game Show」に出展しました（JETRO協力）
   url: https://x.com/sofu_game/status/2116054860139462765?a=R2mfd_3_UqMzHUxoc1s&s=20
 
@@ -25,17 +30,17 @@
   url: https://x.com/STUDIO909info/status/2111131891600695553?s=20
 
 - date: 2026.10.17
-  tag: MEDIA
+  tag: EVENT
   title: 米国の配信番組「The MIX Fall Online Showcase 2026」にて紹介されました
   url: https://mediaindieexchange.com/showcases/the-mix-fall-online-showcase-2026
 
 - date: 2026.09.20
-  tag: SNS
+  tag: EVENT
   title: 総来場者数25万人超の「東京ゲームショウ2026」に出展しました
   url: https://x.com/STUDIO909info/status/2100374176406319424?s=20
 
 - date: 2026.09.06
-  tag: SNS
+  tag: EVENT
   title: 米国シアトルで開催の「PAX West 2026」に出展しました（JETRO協力）
   url: https://x.com/STUDIO909info/status/2096473561087295798?s=20
 
