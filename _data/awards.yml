@@ -1,0 +1,34 @@
+# =============================================
+# STUDIO909 選出歴ロゴ
+# ---------------------------------------------
+# トレーラー下の黒い帯に、ここに書いた順（左→右）で並びます。
+# ロゴ画像は awards/ フォルダに入れてください。
+#
+# name  : ロゴの説明（読み上げ用・画像が出ないときに表示）
+# image : awards/ フォルダ内のファイル名
+# scale : 大きさの調整。正方形のロゴは 1、横長のロゴは 0.75〜0.9 くらい
+# =============================================
+
+- name: INDIE Live Expo 2026.12.1 Official Selection
+  image: indie-live-expo-2026.webp
+  scale: 0.75
+
+- name: The MIX 2026 Official Selection
+  image: mix-2026.webp
+  scale: 1
+
+- name: EAIGC 2026 東亞獨立遊戲慶典
+  image: eaigc-2026.webp
+  scale: 0.94
+
+- name: Out of the Box 2026 Selection
+  image: out-of-the-box-2026.webp
+  scale: 0.86
+
+- name: BitSummit XIV 2026 Official Selection
+  image: bitsummit-2026.webp
+  scale: 1
+
+- name: BIG Summer Showcase 2026
+  image: big-summer-showcase-2026.webp
+  scale: 1
