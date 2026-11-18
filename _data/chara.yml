@@ -1,0 +1,39 @@
+# =============================================
+# STUDIO909 キャラクター（PCのみ表示）
+# ---------------------------------------------
+# お知らせの右・開発タイトルの左・企業情報の右に、
+# ここに書いたキャラクターがランダムな並びで表示されます。
+# 表情はページを開くたびにランダムで変わります（前回と同じ表情は避けます）。
+# 画像は chara/ フォルダに入れてください。
+#
+# name   : キャラクター名（管理用。表情の記録にも使うので、他と重ならない名前に）
+# height : 画面上の高さ（px）。3人の縮尺がそろうように、教師380pxを基準にしています
+# images : chara/ フォルダ内のファイル名（表情ごと）。1つだけでもOK
+# =============================================
+
+- name: 教師
+  height: 380
+  images:
+    - teacher-normal.webp
+    - teacher-smile.webp
+    - teacher-scheme.webp
+    - teacher-lost.webp
+    - teacher-surprise.webp
+
+- name: キア
+  height: 383
+  images:
+    - kia-normal.webp
+    - kia-smile.webp
+    - kia-scheme.webp
+    - kia-fedup.webp
+    - kia-surprise.webp
+
+- name: ポーラ
+  height: 301
+  images:
+    - paula-normal.webp
+    - paula-smile.webp
+    - paula-puzzled.webp
+    - paula-pout.webp
+    - paula-surprise.webp

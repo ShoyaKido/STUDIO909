@@ -210,6 +210,30 @@
   }
   .corp th{background:var(--soft);font-weight:500;width:9em;white-space:nowrap}
 
+  /* ============ キャラクター（PCのみ）：_data/chara.yml の中からランダムに表示 ============
+     本文の枠（760px）の外側の余白に立つので、文字には重なりません。
+     余白がキャラクターより広い画面（幅1280px以上）でだけ表示します */
+  .chara{display:none}
+  @media (min-width:1280px){
+    main section{position:relative}
+    .chara{
+      display:block;
+      position:absolute;
+      /* セクションの縦方向の中央に置く（見出しより上の余白48pxを除いた範囲の中央） */
+      top:calc(50% + 24px);
+      transform:translateY(-50%);
+      width:auto;
+      pointer-events:none;
+      user-select:none;
+      opacity:0;
+      transition:opacity .6s;
+    }
+    .chara.is-shown{opacity:1}
+    /* 本文の枠から24px外側に置く（section の端＝枠の内側24pxの位置なので、合計48px） */
+    .chara[data-side="right"]{left:calc(100% + 48px)}
+    .chara[data-side="left"]{right:calc(100% + 48px)}
+  }
+
   /* ============ フッター ============ */
   footer{
     margin-top:72px;
@@ -368,6 +392,71 @@
     <p class="copyright">&copy; 2026 STUDIO909</p>
   </div>
 </footer>
+
+{% if site.data.chara %}
+<!-- ============ キャラクター（PCのみ）：_data/chara.yml の中からランダムに表示 ============ -->
+<script>
+(function(){
+  // 表示する場所。上から順に、キャラクターをランダムに割り当てます
+  var SLOTS = [
+    { section: 'news',    side: 'right' },  // お知らせの右
+    { section: 'game',    side: 'left'  },  // 開発タイトルの左
+    { section: 'company', side: 'right' }   // 企業情報の右
+  ];
+  var CHARAS = {{ site.data.chara | jsonify }} || [];
+  var pc = window.matchMedia('(min-width: 1280px)');
+  var placed = false;
+
+  function shuffle(list){
+    for (var i = list.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = list[i]; list[i] = list[j]; list[j] = t;
+    }
+    return list;
+  }
+
+  // 表情をランダムに選ぶ（前回と同じ表情は避ける）
+  function pickImage(c){
+    var images = c.images || [];
+    if (!images.length) return null;
+    var key = 'chara:' + c.name, last = null;
+    try { last = localStorage.getItem(key); } catch (e) {}
+    var pool = images.length > 1 ? images.filter(function(f){ return f !== last; }) : images;
+    var file = pool[Math.floor(Math.random() * pool.length)];
+    try { localStorage.setItem(key, file); } catch (e) {}
+    return file;
+  }
+
+  function place(){
+    if (placed || !pc.matches) return;  // スマホ・タブレットでは画像も読み込まない
+    placed = true;
+    var list = shuffle(CHARAS.slice());
+    SLOTS.forEach(function(slot, i){
+      var c = list[i], section = document.getElementById(slot.section);
+      if (!c || !section) return;
+      var file = pickImage(c);
+      if (!file) return;
+      var img = new Image();
+      img.className = 'chara';
+      img.alt = '';
+      img.setAttribute('aria-hidden', 'true');
+      img.decoding = 'async';
+      img.loading = 'lazy';
+      img.setAttribute('data-side', slot.side);
+      img.style.height = (c.height || 380) + 'px';
+      img.onload = function(){ img.classList.add('is-shown'); };
+      img.src = '/chara/' + file;
+      section.appendChild(img);
+    });
+  }
+
+  place();
+  // 画面幅を広げてPC幅になったときにも表示する
+  if (pc.addEventListener) pc.addEventListener('change', place);
+  else if (pc.addListener) pc.addListener(place);
+})();
+</script>
+{% endif %}
 
 </body>
 </html>
